@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peregrinos Bravos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tierra: #2C1810;
+    --ocre: #B5642A;
+    --arena: #E8D5B0;
+    --cielo: #4A6B8A;
+    --mar: #7BA7BC;
+    --niebla: #F2EDE4;
+    --tinta: #1A1208;
+    --oro: #C9935A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--niebla);
+    color: var(--tinta);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* HEADER */
+  header {
+    background-color: var(--tierra);
+    color: var(--arena);
+    padding: 60px 30px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ocre), var(--oro), var(--ocre));
+  }
+
+  .site-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .site-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(42px, 10vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--arena);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .site-subtitle {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--mar);
+    margin-top: 16px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  /* INTRO */
+  .intro {
+    max-width: 680px;
+    margin: 60px auto;
+    padding: 0 30px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .intro p {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--tierra);
+    line-height: 1.8;
+  }
+
+  .intro .hilo {
+    display: inline-block;
+    margin-top: 30px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ocre);
+    border-bottom: 1px solid var(--ocre);
+    padding-bottom: 2px;
+  }
+
+  /* VIAJES SECTION */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--ocre);
+    text-align: center;
+    margin: 70px 0 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  /* VIAJE CARD */
+  .viajes {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .viaje-card {
+    background: white;
+    border-left: 4px solid var(--ocre);
+    padding: 40px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .viaje-card:nth-child(1) { animation-delay: 1.1s; }
+  .viaje-card:nth-child(2) { animation-delay: 1.25s; }
+
+  .viaje-card:hover {
+    transform: translateX(6px);
+    box-shadow: -6px 0 0 var(--tierra), 4px 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .viaje-numero {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--ocre);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .viaje-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--tierra);
+    margin-bottom: 12px;
+  }
+
+  .viaje-subtitulo {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--cielo);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .viaje-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .viaje-meta span {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--ocre);
+    letter-spacing: 0.1em;
+  }
+
+  .viaje-etapas {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--arena);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .etapa-mini {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .etapa-mini .num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--ocre);
+    min-width: 20px;
+  }
+
+  .etapa-mini .ruta {
+    color: var(--tinta);
+    font-weight: 300;
+  }
+
+  .etapa-mini .hilo {
+    font-style: italic;
+    color: var(--cielo);
+    font-size: 14px;
+  }
+
+  .viaje-anterior {
+    border-left-color: var(--cielo);
+    opacity: 0.7;
+  }
+
+  .viaje-anterior .viaje-titulo {
+    color: var(--cielo);
+  }
+
+  .viaje-anterior .viaje-numero {
+    color: var(--cielo);
+  }
+
+  .badge-previo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--cielo);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .badge-nuevo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--ocre);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--tierra);
+    color: var(--arena);
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    opacity: 0.9;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    header { padding: 50px 20px 40px; }
+    .viaje-card { padding: 28px 24px; }
+    .viaje-meta { gap: 12px; }
+    .badge-previo, .badge-nuevo { position: static; display: inline-block; margin-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-label">Cuaderno de viaje</div>
+  <h1 class="site-title">Peregrinos Bravos</h1>
+  <p class="site-subtitle">Caminar para recordar</p>
+</header>
+
+<div class="intro">
+  <p>Un proyecto de memoria caminada. Cada viaje traza un itinerario entre lugares, personas e ideas que merecen ser recorridos a pie y en compañía.</p>
+  <span class="hilo">Viajes</span>
+</div>
+
+<div class="section-label">Itinerarios</div>
+
+<div class="viajes">
+
+  <!-- VIAJE ANTERIOR - BEGUR -->
+  <a class="viaje-card viaje-anterior" href="#begur">
+    <span class="badge-previo">Viaje anterior</span>
+    <div class="viaje-numero">Viaje 01</div>
+    <h2 class="viaje-titulo">De Begur a San Pere de Rodes</h2>
+    <p class="viaje-subtitulo">El camino de ronda como primera travesía</p>
+    <div class="viaje-meta">
+      <span>Costa Brava</span>
+      <span>Camí de Ronda</span>
+    </div>
+  </a>
+
+  <!-- VIAJE ACTUAL -->
+  <a class="viaje-card" href="viaje-machado-benjamin.html">
+    <span class="badge-nuevo">Próximo viaje</span>
+    <div class="viaje-numero">Viaje 02</div>
+    <h2 class="viaje-titulo">De San Pere de Rodes a Perpiñán</h2>
+    <p class="viaje-subtitulo">Benjamin, Machado y la memoria republicana</p>
+    <div class="viaje-meta">
+      <span>4 etapas</span>
+      <span>Costa Brava · Roussillon</span>
+    </div>
+    <div class="viaje-etapas">
+      <div class="etapa-mini">
+        <span class="num">01</span>
+        <span class="ruta">San Pere de Rodes → Portbou</span>
+        <span class="hilo">Benjamin</span>
+      </div>
+      <div class="etapa-mini">
+        <span class="num">02</span>
+        <span class="ruta">Portbou → Port Vendres</span>
+        <span class="hilo">Machado</span>
+      </div>
+      <div class="etapa-mini">
+        <span class="num">03</span>
+        <span class="ruta">Port Vendres → Canet-sur-Mer</span>
+        <span class="hilo">El exilio republicano</span>
+      </div>
+      <div class="etapa-mini">
+        <span class="num">04</span>
+        <span class="ruta">Canet-sur-Mer → Perpiñán</span>
+        <span class="hilo">La ciudad umbral</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  Peregrinos Bravos &nbsp;·&nbsp; Caminar para recordar
+</footer>
+
+</body>
+</html>
