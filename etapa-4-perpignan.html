@@ -33,6 +33,15 @@
   .mapa-texto { text-align: center; position: relative; z-index: 1; }
   .mapa-texto p { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color); }
   .mapa-texto .mapa-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+  .section-mini-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ocre); margin-bottom: 20px; }
+  .video-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+  .video-item { background: white; padding: 20px 24px; display: flex; align-items: flex-start; gap: 20px; border-left: 3px solid var(--color); transition: box-shadow 0.2s; }
+  .video-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .video-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+  .video-info .video-titulo { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--tierra); margin-bottom: 4px; }
+  .video-info .video-desc { font-size: 15px; color: #666; font-style: italic; line-height: 1.5; }
+  .video-info a { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocre); text-decoration: none; border-bottom: 1px solid var(--ocre); margin-top: 8px; display: inline-block; }
+  .video-nota { font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; margin-left: auto; flex-shrink: 0; white-space: nowrap; }
   .nav-etapas { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 40px; border-top: 1px solid #ddd; }
   .nav-etapas a { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocre); text-decoration: none; border-bottom: 1px solid var(--ocre); padding-bottom: 2px; }
   footer { background: var(--tierra); color: var(--arena); text-align: center; padding: 40px 20px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; }
@@ -72,6 +81,31 @@
   <div class="placeholder">
     <div class="icon">✍</div>
     <p>Perpiñán como ciudad ni española ni francesa,<br>capital simbólica del exilio catalán.<br>El lugar donde todo confluye.</p>
+  </div>
+
+  <div class="section-mini-label">Lecturas y contexto</div>
+  <div class="video-grid">
+
+    <div class="video-item">
+      <span class="video-icon">📖</span>
+      <div class="video-info">
+        <div class="video-titulo">Perpiñán: antigua capital del Reino de Mallorca</div>
+        <div class="video-desc">National Geographic · La ciudad que fue centro del Mediterráneo medieval, sus capas históricas y lo que guarda más allá del turismo evidente.</div>
+        <a href="https://viajes.nationalgeographic.com.es/a/antigua-capital-reino-mallorca-esta-francia-guarda-muchas-sorpresas_20259" target="_blank">Leer en National Geographic →</a>
+      </div>
+      <span class="video-nota">Lectura</span>
+    </div>
+
+    <div class="video-item">
+      <span class="video-icon">🗞</span>
+      <div class="video-info">
+        <div class="video-titulo">La Perpiñán de hoy: la extrema derecha en la ciudad del exilio</div>
+        <div class="video-desc">El mismo territorio que acogió a los que huían del fascismo español es hoy uno de los municipios más grandes de Francia gobernados por la extrema derecha. Un contrapunto necesario al final del camino.</div>
+        <a href="https://archive.is/UV2dc" target="_blank">Leer el artículo →</a>
+      </div>
+      <span class="video-nota">Actualidad</span>
+    </div>
+
   </div>
 
   <div class="nav-etapas">
