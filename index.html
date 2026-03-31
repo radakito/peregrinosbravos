@@ -238,6 +238,22 @@
     font-size: 14px;
   }
 
+  .etapa-link {
+    text-decoration: none;
+    padding: 6px 8px;
+    margin: -6px -8px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .etapa-link:hover {
+    background: var(--niebla);
+  }
+
+  .etapa-link:hover .hilo {
+    color: var(--ocre);
+  }
+
   .viaje-anterior {
     border-left-color: var(--cielo);
     opacity: 0.7;
@@ -336,7 +352,7 @@
   </a>
 
   <!-- VIAJE ACTUAL -->
-  <a class="viaje-card" href="viaje-machado-benjamin.html">
+  <div class="viaje-card" style="cursor:default;">
     <span class="badge-nuevo">Próximo viaje</span>
     <div class="viaje-numero">Viaje 02</div>
     <h2 class="viaje-titulo">De San Pere de Rodes a Perpiñán</h2>
@@ -346,28 +362,28 @@
       <span>Costa Brava · Roussillon</span>
     </div>
     <div class="viaje-etapas">
-      <div class="etapa-mini">
+      <a class="etapa-mini etapa-link" href="etapa-1-benjamin.html">
         <span class="num">01</span>
         <span class="ruta">San Pere de Rodes → Portbou</span>
-        <span class="hilo">Benjamin</span>
-      </div>
-      <div class="etapa-mini">
+        <span class="hilo">Benjamin →</span>
+      </a>
+      <a class="etapa-mini etapa-link" href="etapa-2-machado.html">
         <span class="num">02</span>
         <span class="ruta">Portbou → Port Vendres</span>
-        <span class="hilo">Machado</span>
-      </div>
-      <div class="etapa-mini">
+        <span class="hilo">Machado →</span>
+      </a>
+      <a class="etapa-mini etapa-link" href="etapa-3-exilio.html">
         <span class="num">03</span>
         <span class="ruta">Port Vendres → Canet-sur-Mer</span>
-        <span class="hilo">El exilio republicano</span>
-      </div>
-      <div class="etapa-mini">
+        <span class="hilo">El exilio →</span>
+      </a>
+      <a class="etapa-mini etapa-link" href="etapa-4-perpignan.html">
         <span class="num">04</span>
         <span class="ruta">Canet-sur-Mer → Perpiñán</span>
-        <span class="hilo">La ciudad umbral</span>
-      </div>
+        <span class="hilo">Ciudad umbral →</span>
+      </a>
     </div>
-  </a>
+  </div>
 
 </div>
 
