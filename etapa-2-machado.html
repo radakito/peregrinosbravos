@@ -3,187 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Etapa 02 · Machado · Peregrinos Bravos</title>
-
+<title>Etapa 02 · Antonio Machado · Peregrinos Bravos</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --tierra: #2C1810;
-  --ocre: #B5642A;
-  --arena: #E8D5B0;
-  --niebla: #F2EDE4;
-  --tinta: #1A1208;
-  --oro: #C9935A;
-  --mar: #7BA7BC;
-  --color: #3D5A47;
-  --color-light: #B8D4C0;
-}
+  :root { --tierra: #2C1810; --ocre: #B5642A; --arena: #E8D5B0; --niebla: #F2EDE4; --tinta: #1A1208; --oro: #C9935A; --color: #7A3B3B; --color-light: #D4B8B8; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background-color: var(--niebla); color: var(--tinta); font-family: 'Crimson Pro', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.4; }
+  nav { background: var(--tierra); padding: 16px 30px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  nav a { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--arena); text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
+  nav a:hover { opacity: 1; }
+  nav .sep { color: var(--ocre); font-size: 14px; }
+  nav .current { color: var(--oro); opacity: 1; }
+  .hero { background: var(--color); color: var(--color-light); padding: 70px 30px 60px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.2) 0%, transparent 70%); }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ocre); }
+  .etapa-num { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.5em; color: var(--color-light); text-transform: uppercase; margin-bottom: 20px; position: relative; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 8vw, 72px); font-weight: 700; line-height: 1.1; margin-bottom: 16px; color: white; position: relative; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
+  .hero .ruta { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--color-light); opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
+  .paradas { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 28px; position: relative; opacity: 0; animation: fadeUp 0.7s ease forwards 0.7s; }
+  .parada { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 12px; background: rgba(255,255,255,0.12); border-radius: 2px; color: white; }
+  .contenido { max-width: 720px; margin: 0 auto; padding: 70px 30px 80px; }
+  .placeholder { background: white; border: 1px dashed #ccc; border-radius: 2px; padding: 60px 40px; text-align: center; color: #aaa; margin-bottom: 48px; }
+  .placeholder .icon { font-size: 36px; margin-bottom: 16px; opacity: 0.4; }
+  .placeholder p { font-style: italic; font-size: 17px; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background-color: var(--niebla);
-  color: var(--tinta);
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-/* textura */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.4;
-}
-
-/* NAV */
-nav {
-  background: var(--tierra);
-  padding: 16px 30px;
-  display: flex;
-  gap: 12px;
-}
-
-nav a {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--arena);
-  text-decoration: none;
-  opacity: 0.7;
-}
-
-nav .current {
-  color: var(--oro);
-  opacity: 1;
-}
-
-/* HERO MACHADO */
-.hero {
-  background-image: url('machado.jpg');
-  background-size: cover;
-  background-position: center bottom;
-  color: white;
-  padding: 70px 30px 60px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  filter: saturate(0.9) contrast(1.05);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(181, 100, 42, 0.65),
-    rgba(232, 213, 176, 0.75)
-  );
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  height: 4px;
-  width: 100%;
-  background: var(--ocre);
-}
-
-.hero > * {
-  position: relative;
-  z-index: 2;
-}
-
-.etapa-num {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.5em;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeUp 0.7s forwards;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 8vw, 72px);
-  margin-bottom: 16px;
-  opacity: 0;
-  animation: fadeUp 0.7s forwards 0.2s;
-}
-
-.hero .ruta {
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  opacity: 0;
-  animation: fadeUp 0.7s forwards 0.4s;
-}
-
-/* CONTENIDO */
-.contenido {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 70px 30px;
-}
-
-.section-mini-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--ocre);
-  margin-bottom: 20px;
-}
-
-/* FOOTER */
-footer {
-  background: var(--tierra);
-  color: var(--arena);
-  text-align: center;
-  padding: 40px;
-}
-
-/* animación */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  /* CUADERNO */
+  .cuaderno { margin-bottom: 48px; }
+  .cuaderno-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ocre); margin-bottom: 20px; }
+  .folio {
+    background: #FDFAF4;
+    border: 1px solid #E2D9C8;
+    border-top: 4px solid var(--color);
+    padding: 48px 52px;
+    position: relative;
+    box-shadow: 2px 3px 12px rgba(0,0,0,0.06), 0 1px 0 #E2D9C8;
+    margin-bottom: 24px;
+  }
+  .folio::before {
+    content: '';
+    position: absolute;
+    left: 72px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(181,100,42,0.12);
+  }
+  .folio-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ocre);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.7;
+  }
+  .folio h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .folio p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    line-height: 1.85;
+    color: #2A1E14;
+    margin-bottom: 18px;
+    text-indent: 1.5em;
+  }
+  .folio p:first-of-type { text-indent: 0; }
+  .folio .cita {
+    border-left: 2px solid var(--color);
+    margin: 28px 0 28px 20px;
+    padding: 12px 20px;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--color);
+    text-indent: 0;
+    line-height: 1.7;
+  }
+  .folio .cita-autor {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ocre);
+    text-transform: uppercase;
+    margin-top: 8px;
+    text-indent: 0;
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .folio { padding: 32px 24px; }
+    .folio::before { left: 40px; }
+  }
+  .mapa-placeholder { background: linear-gradient(135deg, #d8c8c8 0%, #c8b8b8 100%); height: 280px; display: flex; align-items: center; justify-content: center; border-radius: 2px; margin-bottom: 48px; position: relative; overflow: hidden; }
+  .mapa-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.2) 20px, rgba(255,255,255,0.2) 21px); }
+  .mapa-texto { text-align: center; position: relative; z-index: 1; }
+  .mapa-texto p { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color); }
+  .mapa-texto .mapa-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+  .section-mini-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ocre); margin-bottom: 20px; }
+  .video-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+  .video-item { background: white; padding: 20px 24px; display: flex; align-items: flex-start; gap: 20px; border-left: 3px solid var(--color); transition: box-shadow 0.2s; }
+  .video-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .video-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+  .video-info .video-titulo { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--tierra); margin-bottom: 4px; }
+  .video-info .video-desc { font-size: 15px; color: #666; font-style: italic; line-height: 1.5; }
+  .video-info a { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocre); text-decoration: none; border-bottom: 1px solid var(--ocre); margin-top: 8px; display: inline-block; }
+  .video-nota { font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; margin-left: auto; flex-shrink: 0; white-space: nowrap; }
+  .nav-etapas { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 40px; border-top: 1px solid #ddd; }
+  .nav-etapas a { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocre); text-decoration: none; border-bottom: 1px solid var(--ocre); padding-bottom: 2px; }
+  footer { background: var(--tierra); color: var(--arena); text-align: center; padding: 40px 20px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; }
+  footer a { color: var(--oro); text-decoration: none; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .contenido { padding: 50px 20px 60px; } .video-item { flex-wrap: wrap; } .video-nota { display: none; } }
 </style>
 </head>
-
 <body>
 
 <nav>
   <a href="index.html">Peregrinos Bravos</a>
-  <span>›</span>
+  <span class="sep">›</span>
+  <a href="viaje-machado-benjamin.html">Viaje 02</a>
+  <span class="sep">›</span>
   <span class="current">Etapa 02</span>
 </nav>
 
 <div class="hero">
   <div class="etapa-num">Etapa 02</div>
   <h1>Antonio Machado</h1>
-  <div class="ruta">Ruta simbólica del viaje</div>
+  <div class="ruta">Portbou → Port Vendres · Ruta interior (por definir)</div>
+  <div class="paradas">
+    <span class="parada">Portbou</span>
+    <span class="parada">Port Vendres</span>
+  </div>
 </div>
 
 <div class="contenido">
 
-  <div class="section-mini-label">Texto</div>
-  <p>
-    Aquí puedes añadir el contenido de esta etapa...
-  </p>
+  <div class="cuaderno">
+    <div class="cuaderno-label">Notas de viaje · Antonio Machado</div>
+
+    <div class="folio">
+      <div class="folio-meta">Lectura previa · Ian Gibson, <em>Los últimos caminos de Antonio Machado</em></div>
+      <h3>El hombre que no pudo vivir desterrado de su tierra</h3>
+      <p>Aquí irán tus notas sobre Machado tal como vayas pasándomelas. Este es el formato — cada entrada como un folio de cuaderno, con espacio para respirar y para leer despacio.</p>
+      <p>Puedes incluir reflexiones propias, fragmentos del libro de Gibson, imágenes que te hayan impactado, conexiones con el paisaje que vais a caminar.</p>
+      <div class="cita">
+        Caminante, son tus huellas el camino y nada más; caminante, no hay camino, se hace camino al andar.
+        <span class="cita-autor">Antonio Machado · Proverbios y cantares</span>
+      </div>
+      <p>Cuando quieras añadir más entradas, me las vas pasando y abro un folio nuevo para cada una.</p>
+    </div>
+
+  </div>
+
+  <div class="section-mini-label">Audiovisual</div>
+  <div class="video-grid">
+
+    <div class="video-item">
+      <span class="video-icon">📺</span>
+      <div class="video-info">
+        <div class="video-titulo">Los mundos sutiles</div>
+        <div class="video-desc">Eduardo Chapero-Jackson, 2012 · Imprescindibles, RTVE</div>
+        <a href="https://www.rtve.es/play/videos/imprescindibles/imprescindibles-antonio-machado-mundos-sutiles/5170380/" target="_blank">Ver en RTVE Play →</a>
+      </div>
+      <span class="video-nota">Gratuito</span>
+    </div>
+
+    <div class="video-item">
+      <span class="video-icon">🎬</span>
+      <div class="video-info">
+        <div class="video-titulo">Los días azules</div>
+        <div class="video-desc">Laura Hojman, 2020 · Con Gibson, García Montero, Muñoz Molina</div>
+        <a href="https://www.filmin.es" target="_blank">Ver en Filmin →</a>
+      </div>
+      <span class="video-nota">Suscripción</span>
+    </div>
+
+    <div class="video-item">
+      <span class="video-icon">🎵</span>
+      <div class="video-info">
+        <div class="video-titulo">Serrat — Cantares</div>
+        <div class="video-desc">Del álbum <em>Dedicado a Antonio Machado, poeta</em>, 1969</div>
+        <a href="https://www.youtube.com/results?search_query=serrat+cantares+machado" target="_blank">Escuchar en YouTube →</a>
+      </div>
+      <span class="video-nota">Gratuito</span>
+    </div>
+
+    <div class="video-item">
+      <span class="video-icon">🎵</span>
+      <div class="video-info">
+        <div class="video-titulo">Serrat — En Collioure</div>
+        <div class="video-desc">Homenaje directo a Machado. Letra y música de Serrat.</div>
+        <a href="https://www.youtube.com/results?search_query=serrat+en+collioure" target="_blank">Escuchar en YouTube →</a>
+      </div>
+      <span class="video-nota">Gratuito</span>
+    </div>
+
+  </div>
+
+  <div class="nav-etapas">
+    <a href="etapa-1-benjamin.html">← Etapa 01 — Benjamin</a>
+    <a href="etapa-3-exilio.html">Etapa 03 — El exilio →</a>
+  </div>
+
+  <!-- MAPA -->
+  <div class="section-mini-label" style="margin-top:48px;">Mapa de la etapa</div>
+  <div style="margin-bottom: 48px; border-radius: 2px; overflow: hidden;">
+    <iframe src="https://www.google.com/maps/d/embed?mid=1U3LXvP8_WJw1DK_XPmo5RhR_YC2rkMc&hl=es&ehbc=2E312F" width="100%" height="420" style="border:0; display:block;" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <!-- ALOJAMIENTO -->
+  <div class="section-mini-label">Alojamiento</div>
+  <div style="background:white;border-left:3px solid var(--color);padding:20px 24px;margin-bottom:48px;">
+    <div style="font-family:'Playfair Display',serif;font-size:17px;color:var(--tierra);margin-bottom:4px;">Alojamiento — Noche 2</div>
+    <div style="font-size:15px;color:#666;font-style:italic;margin-bottom:12px;">Le Balcon du Vieux Port · Port Vendres</div>
+    <img src="portvendres.jpg" alt="Alojamiento Port Vendres" style="width:100%;max-height:200px;object-fit:cover;border-radius:2px;margin-bottom:12px;">
+    <a href="https://www.booking.com/hotel/fr/le-balcon-du-vieux-port-vue-sur-le-port.es.html" target="_blank" style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ocre);text-decoration:none;border-bottom:1px solid var(--ocre);">Ver en Booking →</a>
+  </div>
 
 </div>
 
 <footer>
-  ← Volver
+  <a href="index.html">← Volver al viaje</a>
+  &nbsp;·&nbsp;
+  <a href="index.html">Peregrinos Bravos</a>
 </footer>
 
 </body>
