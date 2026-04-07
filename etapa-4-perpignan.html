@@ -15,8 +15,29 @@
   nav a:hover { opacity: 1; }
   nav .sep { color: var(--ocre); font-size: 14px; }
   nav .current { color: var(--oro); opacity: 1; }
-  .hero { background: var(--color); color: var(--color-light); padding: 70px 30px 60px; text-align: center; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.2) 0%, transparent 70%); }
+  .hero {
+  background-image: url('perpignan.webp');
+  background-size: cover;
+  background-position: center;
+  color: var(--color-light);
+  padding: 70px 30px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+ .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(20, 30, 40, 0.45),
+    rgba(123, 167, 188, 0.5)
+  );
+}
+  .hero > * {
+  position: relative;
+  z-index: 2;
+}
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ocre); }
   .etapa-num { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.5em; color: var(--color-light); text-transform: uppercase; margin-bottom: 20px; position: relative; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 8vw, 72px); font-weight: 700; line-height: 1.1; margin-bottom: 16px; color: white; position: relative; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
